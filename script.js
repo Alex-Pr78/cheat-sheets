@@ -23,7 +23,20 @@ const body = document.body;
 
 const buttons = document.querySelectorAll("button");
 
-const tasks = [
+// Сохраняем tasks в localStorage
+
+function saveTasks() {
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
+function loadTasks() {
+  const saved = localStorage.getItem("tasks");
+  return saved ? JSON.parse(saved) : null;
+}
+
+// -
+
+const tasks = JSON.parse(localStorage.getItem("tasks")) || [
   {
     id: "1138465078061",
     completed: false,
@@ -153,6 +166,7 @@ confirmButton.addEventListener("click", () => {
   if (isTaskId !== -1) {
     tasks.splice(isTaskId, 1); // удаляем из массива
     tasks.taskItem.remove(); // удаляем из DOM
+    saveTasks(); // сохранить обновлённый массив
   }
 
   modalOverlay.classList.add("modal-overlay_hidden");
@@ -224,6 +238,7 @@ formCreateQuestion.addEventListener("submit", (event) => {
 
   // Добавляем в массив
   tasks.push(newQuestion);
+  saveTasks(); // сохраняем в браузер
 
   // Добавляем на страницу
   const taskElement = createTaskElement(newQuestion);
@@ -233,3 +248,5 @@ formCreateQuestion.addEventListener("submit", (event) => {
   inputQuestionTitle.value = "";
   inputQuestionText.value = "";
 });
+
+
