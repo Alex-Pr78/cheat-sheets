@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cheat Sheets</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="tasks">
+      <div class="tasks__wrapper">
+
+        <form class="create-question-block">
+          <input
+            class="question-title-input default-text-input"
+            type="text"
+            placeholder="Введите вопрос"
+          />
+
+          <input
+            class="question-text-input default-text-input"
+            type="text"
+            placeholder="Введите ответ"
+          />
+
+          <button type="submit" class="create-task-block__button default-button">Создать вопрос</button>
+        </form>
+
+        <div class="tasks-list"></div>
+      </div>
+    </div>
+
+    <div class="modal-overlay modal-overlay_hidden">
+      <div class="delete-modal">
+        <h3 class="delete-modal__question">
+          Вы действительно хотите удалить эту шпаргалку?
+        </h3>
+        <div class="delete-modal__buttons">
+          <button class="delete-modal__button delete-modal__cancel-button">
+            Отмена
+          </button>
+          <button class="delete-modal__button delete-modal__confirm-button">
+            Удалить
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
